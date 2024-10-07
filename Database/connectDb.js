@@ -1,11 +1,13 @@
 const {Pool}=require('pg')
+const dotenv=require('dotenv')
 
+dotenv.config()
  const client = new Pool({
   host: "localhost",
-  port: 5432,
-  database: "spstask",
-  user: "postgres",
-  password: "mathi@0609",
+  port: process.env.PSQL_PORT,
+  database: process.env.PSQL_DB,
+  user: process.env.PSQL_USER,
+  password: process.env.PSQL_PASS,
 });
 
 client.connect((err) => {
