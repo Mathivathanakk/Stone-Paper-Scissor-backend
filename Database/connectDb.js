@@ -9,10 +9,11 @@ const {Pool}=require('pg')
 });
 
 client.connect((err) => {
-  if (err) {
-    console.log("connection error");
-  } else {
+  if (!err) {
     console.log("database connected successfully");
+  } else {
+   
+    console.log("connection error");
   }
 });
 
