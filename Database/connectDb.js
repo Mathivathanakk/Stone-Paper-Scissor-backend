@@ -2,14 +2,17 @@ const {Pool}=require('pg')
 const dotenv=require('dotenv')
 
 dotenv.config()
- const client = new Pool({
-  host: "localhost",
-  port: process.env.PSQL_PORT,
-  database: process.env.PSQL_DB,
-  user: process.env.PSQL_USER,
-  password: process.env.PSQL_PASS,
-});
+//  const client = new Pool({
+//   host: process.env.POSTGRES_HOST,
+//   port: process.env.POSTGRES_PORT,
+//   database: process.env.POSTGRES_DB,
+//   user: process.env.POSTGRES_USER,
+//   password: process.env.POSTGRES_PASS,
+// });
 
+const client = new Pool({
+  connectionString: process.env.POSTGRES_URL,
+})
 client.connect((err) => {
   if (!err) {
     console.log("database connected successfully");
